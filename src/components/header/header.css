@@ -1,0 +1,11 @@
+.right-aligned {
+    flex-grow: 0 !important;
+  }
+  
+  .nav-item {
+    text-decoration: none;
+    color: rgb(89,110,15,1);
+    margin-right: 1rem;
+    padding-top: 0.5rem;
+    font-weight: 700;
+  }

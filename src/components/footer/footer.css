@@ -1,0 +1,15 @@
+footer {
+    display: flex;
+    justify-content: center;
+    border-top: 2px solid #ccc;
+    padding: 1rem;
+    padding-bottom: 2rem;
+    position: absolute;
+    left: 0;
+    width: 100%
+  }
+  
+  .footer-text {
+    margin: 0;
+    padding: 0;
+  }
