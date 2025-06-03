@@ -1,0 +1,24 @@
+.formular {
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border: 2px solid #fbfbfb;
+    border-radius: 10px;
+    background-color:  rgb(147, 173, 24, 0.8);
+    min-width: 330px;
+    max-width: 527px;
+    justify-self:center;
+  }
+  
+  .sub-form-container {
+    margin: 0.5rem 0;
+    border: 1px solid #fbfbfb;
+    border-radius: 10px;
+    background-color:  rgb(147, 173, 24, 0.8);
+  }
+  
+  .form-container {
+    display: grid;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+  }
+  
