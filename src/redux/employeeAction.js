@@ -1,3 +1,7 @@
+import MOCKDATA from "../data/MOCKDATA";
+import { uploadEmployees } from "./employeeSlice";
+
+// Vérifie les dates d'un formulaire
 export function checkForm(data) {
 	const dateToday = new Date();
 	const yearToday = dateToday.getFullYear();
@@ -14,4 +18,11 @@ export function checkForm(data) {
 	}
 
 	return message;
+}
+
+// Ajoute les employés depuis MOCKDATA
+export function importMockEmployees() {
+	return (dispatch) => {
+		dispatch(uploadEmployees({ employeeList: MOCKDATA }));
+	};
 }
