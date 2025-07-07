@@ -9,21 +9,6 @@
 	top: 29%;
 }
 
-.customBtn {
-	width: 50px;
-	height: 30px;
-	padding: 0;
-	background-color: #515e13;
-	border: none;
-	border-radius: 0 5px 5px 0;
-	color: white;
-	font-weight: 600;
-}
-
-.rndCorner {
-	border-radius: 5px;
-}
-
 .columnsBar {
 	display: none;
 	border: 1px solid #515e13;
@@ -44,11 +29,6 @@
 	align-items: center;
 	gap: 1rem;
 	margin: 0.5rem 0;
-}
-
-
-.main-row {
-  min-height: calc(100vh - 196px);
 }
 
 /* Reset default browser style for checkbox before applying custom style */
