@@ -1,6 +1,19 @@
 import MOCKDATA from "../data/MOCKDATA";
 import { uploadEmployees } from "./employeeSlice";
 
+// Charge depuis localStorage, sinon fallback sur MOCKDATA
+export function loadEmployeesFromStorage() {
+	return (dispatch) => {
+		const saved = localStorage.getItem("employeeList");
+		if (saved) {
+			dispatch(uploadEmployees({ employeeList: JSON.parse(saved) }));
+		} else {
+			dispatch(uploadEmployees({ employeeList: MOCKDATA }));
+			localStorage.setItem("employeeList", JSON.stringify(MOCKDATA));
+		}
+	};
+}
+
 // Vérifie les dates d'un formulaire
 export function checkForm(data) {
 	const dateToday = new Date();

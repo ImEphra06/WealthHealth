@@ -16,10 +16,11 @@ function GlobalFilter({ preGlobalFilteredRows, globalFilter, setGlobalFilter }) 
 	}, 200);
 
 	return (
+		// <--- Barre de recherche globale : --->
 		<div className="searchBlock">
 			<strong>Search</strong>
 			<input
-				className="form-control ml-2 border border-secondary"
+				className="form-control"
 				value={value || ""}
 				onChange={(e) => {
 					setValue(e.target.value);
@@ -116,12 +117,14 @@ function Table({ columns, data }) {
 							<IndeterminateCheckbox {...getToggleHideAllColumnsProps()} /> Toggle All
 						</div>
 					</div>
+
+					{/* <--- Bouton de colonnes ---> */}
 					<button
-						className={displayColumnsBar ? "customBtn" : "customBtn rndCorner"}
+						className="btn btn-outline-secondary"
 						type="button"
 						title="Hide column(s)"
 						onClick={toggleColumnsBar}>
-						{displayColumnsBar ? "X" : "COL"}
+						{displayColumnsBar ? "X" : "Columns"}
 					</button>
 				</div>
 			</div>
@@ -129,8 +132,9 @@ function Table({ columns, data }) {
 			<div className="d-inline-flex justify-content-between flex-wrap w-85 my-3 p-0">
 				<div className="searchBlock">
 					<strong>Show&ensp;</strong>
+					{/* <--- Sélecteur de taille de page : ---> */}
 					<select
-						className="ml-2"
+						className="form-select form-select-sm w-auto"
 						value={pageSize}
 						onChange={(e) => setPageSize(Number(e.target.value))}>
 						{[10, 25, 50, 100].map((size) => (
@@ -148,7 +152,7 @@ function Table({ columns, data }) {
 			</div>
 
 			<div className="tableContainer m-0 p-0 w-85 h-75">
-				<table {...getTableProps()} className="m-0">
+				<table {...getTableProps()} className="table table-striped table-bordered">
 					<thead>
 						{headerGroups.map((headerGroup) => (
 							<tr {...headerGroup.getHeaderGroupProps()}>
@@ -178,9 +182,11 @@ function Table({ columns, data }) {
 
 			<div className="d-inline-flex justify-content-between align-items-center flex-wrap w-85 my-3 p-0">
 				<div className="mock-button-wrapper">
-					<button className="customBtn" onClick={launchMock}>
+					{/* <--- Bouton "Add Mock Employees" : ---> */}
+					<button className="btn btn-success" onClick={launchMock}>
 						Add Mock Employees
 					</button>
+
 					<Modal
 						display={modalOpen}
 						setDisplay={setModalOpen}
@@ -188,24 +194,28 @@ function Table({ columns, data }) {
 						params={{ bgColor: "#93AD18", Color: "white", link: "" }}
 					/>
 				</div>
-				<div className="d-inline-flex justify-content-end w-75 m-3">
-					<div>
-						<button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>{"<<"}</button>{" "}
-						<button onClick={previousPage} disabled={!canPreviousPage}>{"<"}</button>{" "}
-						<button onClick={nextPage} disabled={!canNextPage}>{">"}</button>{" "}
-						<button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>{">>"}</button>{" "}
+
+				<div className="d-flex justify-content-end align-items-center">
+					<div className="btn-group me-2">
+						<button className="btn btn-outline-primary btn-sm" onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+							{"<<"}
+						</button>
+						<button className="btn btn-outline-primary btn-sm" onClick={previousPage} disabled={!canPreviousPage}>
+							{"<"}
+						</button>
+						<button className="btn btn-outline-primary btn-sm" onClick={nextPage} disabled={!canNextPage}>
+							{">"}
+						</button>
+						<button className="btn btn-outline-primary btn-sm" onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
+							{">>"}
+						</button>
 					</div>
-					<div className="nextBlock">
-						<span>
-							<strong> Page </strong>
-							<strong>
-								{pageIndex + 1} of {pageOptions.length}
-							</strong>{" "}
-						</span>
-					</div>
+					<span className="me-2">
+						Page <strong>{pageIndex + 1} of {pageOptions.length}</strong>
+					</span>
 				</div>
 			</div>
-		</Row>
+		</Row >
 	);
 }
 
