@@ -5,8 +5,9 @@ footer {
     padding: 1rem;
     padding-bottom: 2rem;
     position: absolute;
+    min-height: 50px;
     left: 0;
-    width: 100%
+    width: 100%;
   }
   
   .footer-text {

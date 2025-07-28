@@ -7,11 +7,12 @@ function HomeCard() {
 		<Card style={{ width: "18rem" }} bg="light" className="p-3 m-3 h-50">
 			<Card.Img
 				fetchpriority="high"
-				width="253"
-				height="309"
+				width={435}
+				height={510}
 				variant="top"
 				src={logo}
 				alt="logo wealth health"
+				style={{ objectFit: "contain" }}
 			/>
 			<Card.Body>
 				<Card.Title style={{ textAlign: "center" }}>HRnet</Card.Title>

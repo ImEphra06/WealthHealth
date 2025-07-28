@@ -1,8 +1,5 @@
 import React from "react";
 import propTypes from "prop-types";
-import { useDispatch } from "react-redux";
-import { importMockEmployees } from "../../redux/employeeAction";
-import { Modal } from "@imephra06/pluginmodal";
 import { useTable, useGlobalFilter, useAsyncDebounce, usePagination, useSortBy } from "react-table";
 import Row from "react-bootstrap/Row";
 import "../../style/style.css";
@@ -48,9 +45,7 @@ const IndeterminateCheckbox = React.forwardRef(({ indeterminate, ...rest }, ref)
  * Table displays the employee list with features: sort, filter, pagination, column toggle and mock upload.
  */
 function Table({ columns, data }) {
-	const dispatch = useDispatch();
 	const [displayColumnsBar, setDisplayColumnsBar] = React.useState(false);
-	const [modalOpen, setModalOpen] = React.useState(false);
 
 	const toggleColumnsBar = (e) => {
 		e.stopPropagation();
@@ -61,11 +56,6 @@ function Table({ columns, data }) {
 				setDisplayColumnsBar(false);
 			}
 		}
-	};
-
-	const launchMock = () => {
-		dispatch(importMockEmployees());
-		setModalOpen(true);
 	};
 
 	const {
@@ -180,20 +170,7 @@ function Table({ columns, data }) {
 				</table>
 			</div>
 
-			<div className="d-inline-flex justify-content-between align-items-center flex-wrap w-85 my-3 p-0">
-				<div className="mock-button-wrapper">
-					{/* <--- Bouton "Add Mock Employees" : ---> */}
-					<button className="btn btn-success" onClick={launchMock}>
-						Add Mock Employees
-					</button>
-
-					<Modal
-						display={modalOpen}
-						setDisplay={setModalOpen}
-						message="Mock employees added successfully!"
-						params={{ bgColor: "#93AD18", Color: "white", link: "" }}
-					/>
-				</div>
+			<div className="justify-content-between align-items-center flex-wrap w-85 my-3 p-0">
 
 				<div className="d-flex justify-content-end align-items-center">
 					<div className="btn-group me-2">

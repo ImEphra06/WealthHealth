@@ -1,15 +1,18 @@
-import MOCKDATA from "../data/MOCKDATA";
 import { uploadEmployees } from "./employeeSlice";
 
-// Charge depuis localStorage, sinon fallback sur MOCKDATA
+// Charge depuis localStorage
 export function loadEmployeesFromStorage() {
 	return (dispatch) => {
 		const saved = localStorage.getItem("employeeList");
 		if (saved) {
-			dispatch(uploadEmployees({ employeeList: JSON.parse(saved) }));
-		} else {
-			dispatch(uploadEmployees({ employeeList: MOCKDATA }));
-			localStorage.setItem("employeeList", JSON.stringify(MOCKDATA));
+			try {
+				const parsed = JSON.parse(saved);
+				if (Array.isArray(parsed)) {
+					dispatch(uploadEmployees({ employeeList: parsed }));
+				}
+			} catch (e) {
+				console.error("Invalid employee data in localStorage");
+			}
 		}
 	};
 }
@@ -31,11 +34,4 @@ export function checkForm(data) {
 	}
 
 	return message;
-}
-
-// Ajoute les employés depuis MOCKDATA
-export function importMockEmployees() {
-	return (dispatch) => {
-		dispatch(uploadEmployees({ employeeList: MOCKDATA }));
-	};
 }
