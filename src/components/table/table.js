@@ -107,15 +107,6 @@ function Table({ columns, data }) {
 							<IndeterminateCheckbox {...getToggleHideAllColumnsProps()} /> Toggle All
 						</div>
 					</div>
-
-					{/* <--- Bouton de colonnes ---> */}
-					<button
-						className="btn btn-outline-secondary"
-						type="button"
-						title="Hide column(s)"
-						onClick={toggleColumnsBar}>
-						{displayColumnsBar ? "X" : "Columns"}
-					</button>
 				</div>
 			</div>
 
